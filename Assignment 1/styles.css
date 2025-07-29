@@ -211,7 +211,31 @@ body {
 
   .card {
     width: 100%;
+  }}
+  
+@media (max-width: 526px) {
+  .testimonials-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
   }
+
+  .card {
+    width: 320px;
+
+    
+  }
+  body{
+    padding:0%;
+    display: flex;
+    justify-content: center;
+  }
+  .testimonials-grid{
+    max-width: fit-content;
+    
+  }
+  
 }
 @media (min-width: 715px) and (max-width: 1439px) {
   .jonathan-card h4,
