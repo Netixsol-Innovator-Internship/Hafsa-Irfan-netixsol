@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +6,7 @@
 
 body {
   font-family: 'Barlow Semi Condensed', sans-serif;
+  font-size: 13px;
   background-color: hsl(214, 17%, 92%);
   padding: 6rem;
   font-size: 13px;
@@ -32,15 +32,12 @@ body {
   justify-content: space-between;
 }
 
-
 .purple {
   background-color: hsl(263, 55%, 52%);
-  grid-column: span 2;
   background-image: url('images/bg-pattern-quotation.svg');
   background-repeat: no-repeat;
   background-position: top right 5rem;
 }
-
 
 .dark-blue {
   background-color: hsl(217, 19%, 35%);
@@ -54,13 +51,10 @@ body {
 .white {
   background-color: hsl(0, 0%, 100%);
   color: hsl(217, 19%, 35%);
-  grid-column: 4 / 5;
-  grid-row: 1 / 3;
 }
 
 .black {
   background-color: hsl(219, 29%, 14%);
-  grid-column: span 2;
 }
 
 .header {
@@ -81,7 +75,16 @@ body {
 .header h3 {
   font-size: 1rem;
   font-weight: 600;
+  
+
 }
+.Jonathan_para{
+  margin-bottom: 2rem;
+}
+.Jeanette_para{
+  margin-bottom: 2rem;
+}
+
 
 .header p {
   font-size: 0.8rem;
@@ -99,22 +102,90 @@ body {
   opacity: 0.85;
 }
 
-
-@media (max-width: 1024px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
+/* ===== MOBILE & TABLET VIEW (up to 1439px) ===== */
+@media (max-width: 1439px) {
+  body {
+    padding: 2rem 1rem;
   }
-}
 
-@media (max-width: 768px) {
   .testimonials-grid {
     grid-template-columns: 1fr;
+    padding: 0;
   }
 
-  .white,
-  .purple,
-  .black {
+  .card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .card-purple,
+  .card-white,
+  .card-black {
     grid-column: auto !important;
     grid-row: auto !important;
   }
+
+  .purple {
+    background-position: top right 1rem;
+  }
 }
+
+/* ===== DESKTOP VIEW (1440px and up) ===== */
+@media (min-width: 1440px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1200px;
+    margin: auto;
+    padding: 0;
+  }
+
+  .card-purple {
+    grid-column: span 2;
+  }
+
+  .card-white {
+    grid-column: 4 / 5;
+    grid-row: 1 / 3;
+  }
+
+  .card-black {
+    grid-column: span 2;
+  }
+
+  .purple {
+    background-position: top right 5rem;
+  }
+}
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 3;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+
