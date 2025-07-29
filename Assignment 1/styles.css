@@ -9,7 +9,6 @@ body {
   font-size: 13px;
   background-color: hsl(214, 17%, 92%);
   padding: 6rem;
-  font-size: 13px;
   line-height: 1.5;
   display: flex;
   justify-content: center;
@@ -30,7 +29,16 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
 }
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
 
 .purple {
   background-color: hsl(263, 55%, 52%);
@@ -38,14 +46,23 @@ body {
   background-repeat: no-repeat;
   background-position: top right 5rem;
 }
-
 .dark-blue {
   background-color: hsl(217, 19%, 35%);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.5rem;
 }
 
 .light-grey {
   background-color: hsl(0, 0%, 100%);
   color: hsl(217, 19%, 35%);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.5rem;
 }
 
 .white {
@@ -75,49 +92,76 @@ body {
 .header h3 {
   font-size: 1rem;
   font-weight: 600;
-  
-
 }
-.Jonathan_para{
-  margin-bottom: 2rem;
-}
-.Jeanette_para{
-  margin-bottom: 2rem;
-}
-
 
 .header p {
   font-size: 0.8rem;
   opacity: 0.7;
-}
-
+}/* GLOBAL MINOR TWEAK: Slightly reduce heading spacing */
 .card h4 {
   font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem; /* previously 0.8rem */
 }
+
+/* Reset spacing only for Jonathan and Jeanette's cards */
+.jonathan-card h4,
+.jeanette-card h4 {
+  margin-bottom: 0.5rem !important;
+}
+
+.jonathan-card .quote,
+.jeanette-card .quote {
+  margin-top: 0 !important;
+  line-height: 1.6;
+}
+
 
 .quote {
   font-size: 0.9rem;
   opacity: 0.85;
 }
 
-/* ===== MOBILE & TABLET VIEW (up to 1439px) ===== */
-@media (max-width: 1439px) {
-  body {
-    padding: 2rem 1rem;
-  }
 
+
+.testimonial-content h3 {
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-content p {
+  margin-top: 0;
+  line-height: 1.6;
+}
+
+/* ===== Hover Animation ===== */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ===== Animation Keyframes ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== TABLET VIEW (768px to 1439px) ===== */
+@media (min-width: 768px) and (max-width: 1439px) {
   .testimonials-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+     margin: auto;
     padding: 0;
   }
-
-  .card {
-    padding: 1.5rem;
-    border-radius: 1rem;
-  }
-
+.jeanette-card,
+.jonathan-card,
   .card-purple,
   .card-white,
   .card-black {
@@ -126,7 +170,7 @@ body {
   }
 
   .purple {
-    background-position: top right 1rem;
+    background-position: top right 2rem;
   }
 }
 
@@ -156,36 +200,29 @@ body {
     background-position: top right 5rem;
   }
 }
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-@media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+/* ===== MOBILE VIEW (below 740px) ===== */
+@media (max-width: 740px) {
+  .testimonials-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .card {
+    width: 100%;
   }
 }
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@media (min-width: 715px) and (max-width: 1439px) {
+  .jonathan-card h4,
+  .jeanette-card h4 {
+    margin-bottom: 0;
+    padding: 0;
   }
-  to {
-    opacity: 3;
-    transform: translateY(0);
+
+  .jonathan-card .quote,
+  .jeanette-card .quote {
+    margin-top: 0;
+    line-height: 1.5;
   }
 }
-
-.card {
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards;
-}
-
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-.card:nth-child(5) { animation-delay: 0.5s; }
-
